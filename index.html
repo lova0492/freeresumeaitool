@@ -1,11 +1,79 @@
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>Resume Builder Application</title>
-    </head>
-    <body>
-        <div id='root'></div>
-        <script type='module' src='/src/main.tsx'></script>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free AI-powered resume builder with ATS optimization. Create professional resumes that get you hired." />
+    <meta name="theme-color" content="#1E90FF" />
+    <title>ResumeAI - Free AI Resume Builder | ATS-Optimized</title>
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical CSS - Inlined for faster FCP -->
+    <style>
+      /* Critical above-the-fold styles */
+      *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+      html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+      body{margin:0;line-height:inherit}
+      #root{min-height:100vh;display:flex;flex-direction:column}
+      
+      /* Critical color variables */
+      :root{
+        --background:0.98 0 0;
+        --foreground:0.145 0 0;
+        --primary:0.60 0.22 250;
+        --primary-foreground:0.985 0 0;
+      }
+      body{
+        background-color:oklch(var(--background));
+        color:oklch(var(--foreground));
+      }
+      
+      /* Loading spinner for initial load */
+      .loading-spinner{
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:48px;
+        height:48px;
+        border:4px solid oklch(var(--primary)/0.2);
+        border-top-color:oklch(var(--primary));
+        border-radius:50%;
+        animation:spin 0.8s linear infinite;
+      }
+      @keyframes spin{to{transform:rotate(360deg)}}
+      
+      /* Critical header styles */
+      header{
+        position:sticky;
+        top:0;
+        z-index:50;
+        width:100%;
+        border-bottom:1px solid oklch(0.90 0.01 250);
+        background-color:oklch(var(--background)/0.95);
+        backdrop-filter:blur(8px);
+      }
+      
+      /* Skeleton loader styles */
+      .skeleton{
+        animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+        background-color:oklch(0.96 0.01 250);
+        border-radius:0.375rem;
+      }
+      @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    </style>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/assets/generated/resumeai-logo-transparent.dim_200x60.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="/assets/generated/homepage-hero.dim_1200x600.png" as="image" fetchpriority="high" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
